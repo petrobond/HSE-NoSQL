@@ -1,0 +1,6 @@
+pymongo>=4.8.0
+faker>=30.0.0
+locust>=2.31.0
+matplotlib>=3.9.0
+pandas>=2.2.0
+

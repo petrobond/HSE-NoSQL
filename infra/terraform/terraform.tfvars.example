@@ -1,0 +1,6 @@
+yc_token            = "YOUR_YC_TOKEN"
+cloud_id            = "YOUR_CLOUD_ID"
+folder_id           = "YOUR_FOLDER_ID"
+mongodb_password    = "STRONG_PASSWORD"
+ssh_public_key_path = "~/.ssh/id_ed25519.pub"
+
