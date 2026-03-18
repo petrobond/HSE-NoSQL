@@ -1,0 +1,2 @@
+Method,Name,Error,Occurrences
+mongo_write,insert_enrollment,"DuplicateKeyError('E11000 duplicate key error collection: university.enrollments index: enrollmentId_1 dup key: { enrollmentId: ""ENR-LT-38947186"" }, full error: {\'index\': 0, \'code\': 11000, \'errmsg\': \'E11000 duplicate key error collection: university.enrollments index: enrollmentId_1 dup key: { enrollmentId: ""ENR-LT-38947186"" }\', \'keyPattern\': {\'enrollmentId\': 1}, \'keyValue\': {\'enrollmentId\': \'ENR-LT-38947186\'}}')",1

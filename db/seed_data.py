@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import argparse
 import random
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 from faker import Faker
 from pymongo import MongoClient
@@ -96,7 +96,7 @@ def seed_students(database, fake: Faker, count: int) -> list[dict]:
                 "departmentId": dept,
                 "group": f"{dept}-{random.randint(1, 15):02d}",
                 "year": random.randint(1, 6),
-                "enrolledAt": datetime.now(UTC),
+                "enrolledAt": datetime.now(timezone.utc),
                 "status": "active",
             }
         )
@@ -129,7 +129,7 @@ def seed_enrollments_and_grades(database, students: list[dict], courses: list[di
                     "studentId": student["studentId"],
                     "courseId": course["courseId"],
                     "semester": semester,
-                    "enrolledAt": datetime.now(UTC),
+                    "enrolledAt": datetime.now(timezone.utc),
                     "status": random.choice(["enrolled", "completed"]),
                 }
             )
@@ -143,7 +143,7 @@ def seed_enrollments_and_grades(database, students: list[dict], courses: list[di
                         "courseId": course["courseId"],
                         "semester": semester,
                         "grade": random.choice(GRADE_CHOICES),
-                        "updatedAt": datetime.now(UTC),
+                        "updatedAt": datetime.now(timezone.utc),
                     }
                 )
 

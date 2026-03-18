@@ -7,7 +7,7 @@ import argparse
 import statistics
 import time
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 from pymongo import MongoClient
 from pymongo.errors import DuplicateKeyError
@@ -85,7 +85,7 @@ def cmd_create_student(ctx: AppContext, args: argparse.Namespace) -> None:
         "departmentId": args.department_id,
         "group": args.group,
         "year": args.year,
-        "enrolledAt": datetime.now(UTC),
+        "enrolledAt": datetime.now(timezone.utc),
         "status": "active",
     }
 
@@ -125,7 +125,7 @@ def cmd_enroll(ctx: AppContext, args: argparse.Namespace) -> None:
         "studentId": args.student_id,
         "courseId": args.course_id,
         "semester": args.semester,
-        "enrolledAt": datetime.now(UTC),
+        "enrolledAt": datetime.now(timezone.utc),
         "status": "enrolled",
     }
 
@@ -150,7 +150,7 @@ def cmd_add_grade(ctx: AppContext, args: argparse.Namespace) -> None:
         "courseId": args.course_id,
         "semester": args.semester,
         "grade": args.grade,
-        "updatedAt": datetime.now(UTC),
+        "updatedAt": datetime.now(timezone.utc),
     }
     try:
         timed("add-grade", lambda: ctx.db.grades.insert_one(doc))

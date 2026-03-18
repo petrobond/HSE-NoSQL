@@ -10,6 +10,3 @@ __pycache__/
 *.tfstate.*
 terraform.tfvars
 
-# Load test artifacts
-tests/load/results/
-

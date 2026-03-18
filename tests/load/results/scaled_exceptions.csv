@@ -1,0 +1,32 @@
+Count,Message,Traceback,Nodes
+1,"E11000 duplicate key error collection: university.enrollments index: enrollmentId_1 dup key: { enrollmentId: ""ENR-LT-38947186"" }, full error: {'index': 0, 'code': 11000, 'errmsg': 'E11000 duplicate key error collection: university.enrollments index: enrollmentId_1 dup key: { enrollmentId: ""ENR-LT-38947186"" }', 'keyPattern': {'enrollmentId': 1}, 'keyValue': {'enrollmentId': 'ENR-LT-38947186'}}","  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/locust/user/task.py"", line 362, in run
+    self.execute_next_task()
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/locust/user/task.py"", line 395, in execute_next_task
+    self.execute_task(self._task_queue.popleft())
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/locust/user/task.py"", line 512, in execute_task
+    task(self.user)
+  File ""/home/yc-user/HSE-NoSQL/tests/load/locustfile.py"", line 79, in write_enrollment
+    self.db.enrollments.insert_one(
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py"", line 891, in insert_one
+    self._insert_one(
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py"", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py"", line 2083, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py"", line 1968, in _retry_with_session
+    return self._retry_internal(
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/pymongo/_csot.py"", line 125, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py"", line 2014, in _retry_internal
+    ).run()
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py"", line 2763, in run
+    return self._read() if self._is_read else self._write()
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py"", line 2895, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py"", line 829, in _insert_command
+    _check_write_command_response(result)
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/pymongo/helpers_shared.py"", line 322, in _check_write_command_response
+    _raise_last_write_error(write_errors)
+  File ""/home/yc-user/HSE-NoSQL/.venv/lib/python3.10/site-packages/pymongo/helpers_shared.py"", line 292, in _raise_last_write_error
+    raise DuplicateKeyError(error.get(""errmsg""), 11000, error)
+",local

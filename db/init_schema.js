@@ -9,12 +9,9 @@ const createCollectionWithValidator = (name, validator) => {
   const exists = database.getCollectionNames().includes(name);
   if (!exists) {
     database.createCollection(name, { validator });
+    print(`  Created collection: ${name}`);
   } else {
-    database.runCommand({
-      collMod: name,
-      validator,
-      validationLevel: "strict",
-    });
+    print(`  Collection already exists: ${name}, skipping`);
   }
 };
 
@@ -123,8 +120,9 @@ database.grades.createIndex({ gradeId: 1 }, { unique: true });
 database.grades.createIndex({ studentId: 1, semester: 1 });
 database.grades.createIndex({ courseId: 1, semester: 1 });
 
-sh.enableSharding(dbName);
-sh.shardCollection(`${dbName}.enrollments`, { departmentId: 1, studentId: 1 });
+// Sharding is managed by Yandex Managed MongoDB — enable via cloud console/API
+// sh.enableSharding(dbName);
+// sh.shardCollection(`${dbName}.enrollments`, { departmentId: 1, studentId: 1 });
 
 print("Schema initialization complete.");
 
